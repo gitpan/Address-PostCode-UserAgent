@@ -18,7 +18,6 @@ WriteMakefile(
         'Test::More' => 0,
     },
     PREREQ_PM => {
-        'JSON'             => 0,
         'HTTP::Tiny'       => 0,
         'Throwable'        => 0,
         'Moo'              => 0,

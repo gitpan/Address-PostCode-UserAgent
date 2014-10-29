@@ -33,7 +33,6 @@
       "runtime" : {
          "requires" : {
             "HTTP::Tiny" : "0",
-            "JSON" : "0",
             "Moo" : "0",
             "Throwable" : "0",
             "namespace::clean" : "0",
@@ -49,5 +48,5 @@
          "web" : "https://github.com/Manwar/Address-PostCode-UserAgent"
       }
    },
-   "version" : "0.01"
+   "version" : "0.02"
 }
