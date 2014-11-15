@@ -1,6 +1,6 @@
 package Address::PostCode::UserAgent;
 
-$Address::PostCode::UserAgent::VERSION = '0.02';
+$Address::PostCode::UserAgent::VERSION = '0.03';
 
 =head1 NAME
 
@@ -8,7 +8,7 @@ Address::PostCode::UserAgent - User agent for Address::PostCode::* family.
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
@@ -29,18 +29,23 @@ The L<Address::PostCode::UserAgent> module is the core library Address::PostCode
 
 =head1 METHODS
 
-=head2 get(<url>)
+=head2 get($url, \%headers)
 
-The method get() expects one parameter i.e. URL and returns the standard response.
-On error throws exception of type L<Address::PostCode::UserAgent::Exception>.
+It requires URL and optionally headers. It returns the standard response.On error
+throws exception of type L<Address::PostCode::UserAgent::Exception>.
 
 =cut
 
 sub get {
-    my ($self, $url) = @_;
+    my ($self, $url, $headers) = @_;
 
+    die "ERROR: Headers have to be hash ref." if (defined $headers && ref($headers) ne 'HASH');
     my $ua = $self->ua;
-    my $response = $ua->request('GET', $url);
+    my $response = (defined $headers)
+                   ?
+                   ($ua->request('GET', $url, { headers => $headers }))
+                   :
+                   ($ua->request('GET', $url));
 
     my @caller = caller(1);
     @caller = caller(2) if $caller[3] eq '(eval)';

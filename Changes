@@ -1,5 +1,8 @@
 Revision history for Address-PostCode-UserAgent
 
+0.03  2014-11-15T11:10:25+01:00
+      - Added support to accept headers optionally to the method get().
+
 0.02  2014-10-29T15:40:00+01:00
       - Removed the pre-req 'JSON' from the Makefile.PL file.
 
